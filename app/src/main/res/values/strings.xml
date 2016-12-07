@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Savage Worlds Character Creator</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_characters">No Characters</string>
+    <string name="menuitemadd">Add</string>
+    <string name="menuitemedit">Edit</string>
+    <string name="menuitemdelete">Delete</string>
+    <string name="savebutton">Save</string>
+    <string name="hint_name">Name</string>
+    <string name="label_name">Name: </string>
+    <string name="label_info2">PlaceHolder2: </string>
+    <string name="label_info3">PlaceHolder3: </string>
+    <string name="label_info4">PlaceHolder4: </string>
+    <string name="label_info5">PlaceHolder5: </string>
+    <string name="label_info6">PlaceHolder6: </string>
+    <string name="label_info7">PlaceHolder7: </string>
+    <string name="confirm_title">Confirm?</string>
+    <string name="confirm_message">Delete Character</string>
+    <string name="confirm_add">ADD/EDIT</string>
+    <string name="confirm_edit">EDIT</string>
+    <string name="errormessage">Error Incomplete Entry</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="tab_list">Address List</string>
+    <string name="tab_detail">Character</string>
+    <string name="tab_add">Add Character</string>
+    <string name="tab_edit">Address List</string>
 </resources>
