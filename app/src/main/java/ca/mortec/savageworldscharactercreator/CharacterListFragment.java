@@ -1,6 +1,6 @@
 package ca.mortec.savageworldscharactercreator;
 
-import android.app.Activity;
+
 import android.app.ListFragment;
 import android.content.Context;
 import android.database.Cursor;
@@ -28,10 +28,10 @@ public class CharacterListFragment extends ListFragment{
     public interface CharacterListFragmentListener
     {
         //called when user selects a character
-        public void onCharacterSelected(long num); //Refactor ****
+        void onCharacterSelected(long num);
 
         //called when users adds a character
-        public void onAddCharacter(); //Refactor ******
+        void onAddCharacter();
     }
 
     //responds to the user touching a character's name in the ListView
@@ -45,15 +45,15 @@ public class CharacterListFragment extends ListFragment{
     };//end viewCharacterListener
 
     private CharacterListFragmentListener listener;
-    private ListView characterListView; //Refactor ********
+    ListView characterListView; //Refactor ********
     private CursorAdapter characterAdapter;//adapter for the ListView
 
     //set CharacterListFragment when fragment attached
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context context) {
 
-        super.onAttach(activity);
-        listener = (CharacterListFragmentListener) activity;
+        super.onAttach(context);
+        listener = (CharacterListFragmentListener) context;
 
     }
 

@@ -1,10 +1,11 @@
 package ca.mortec.savageworldscharactercreator;
 
-import android.app.Activity;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -30,10 +31,10 @@ public class CharacterDetails extends Fragment {
     public interface character_detailsListener
     {
         //called when a character is deleted
-        public void onCharacterDeleted();
+        void onCharacterDeleted();
 
         //called to pass Bundle of character's info for editing
-        public void onEditCharacter(Bundle arguments);
+        void onEditCharacter(Bundle arguments);
     }
 
     character_detailsListener listener;
@@ -51,10 +52,10 @@ public class CharacterDetails extends Fragment {
 
     //sets the character_detailsListener when fragment attached
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context context) {
 
-        super.onAttach(activity);
-        listener = (character_detailsListener) activity;
+        super.onAttach(context);
+        listener = (character_detailsListener) context;
 
     }
 
@@ -249,7 +250,7 @@ public class CharacterDetails extends Fragment {
                                 }
                             };
                             //execute the ASyncTask to delete character at Num
-                            deleteTask.execute(new Long[] {Num});
+                            deleteTask.execute(Num); //convert to just : Num instead?
                         }
                     }
 

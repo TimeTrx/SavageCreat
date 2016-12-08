@@ -10,8 +10,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15px"
-        android:paddingTop="15px">
+        android:padding="20.00dp"
+        android:paddingTop="20.00dp">
 
         <TableRow
             android:layout_width="fill_parent"
@@ -32,6 +32,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/nametext"
+                android:labelFor="@+id/nametext"
                 android:layout_column="7"
                 android:padding="11dp" />
         </TableRow>
@@ -55,6 +56,7 @@
                 android:inputType="text"
                 android:ems="10"
                 android:id="@+id/info_two_text"
+                android:labelFor="@+id/info_two_text"
                 android:layout_column="7" />
         </TableRow>
 
@@ -76,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/info_three_text"
+                android:labelFor="@+id/info_three_text"
                 android:layout_column="7"
                 android:inputType="text" />
         </TableRow>
@@ -97,7 +100,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/info_four_text"
-                android:layout_column="7" />
+                android:labelFor="@+id/info_four_text"
+                android:layout_column="7"
+                android:inputType="text" />
         </TableRow>
 
         <TableRow
@@ -117,7 +122,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/info_five_text"
-                android:layout_column="7" />
+                android:labelFor="@+id/info_five_text"
+                android:layout_column="7"
+                android:inputType="text" />
         </TableRow>
 
         <TableRow
@@ -137,7 +144,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/info_six_text"
-                android:layout_column="7" />
+                android:labelFor="@+id/info_six_text"
+                android:layout_column="7"
+                android:inputType="text" />
         </TableRow>
 
         <TableRow
@@ -157,7 +166,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/info_seven_text"
-                android:layout_column="7" />
+                android:labelFor="@+id/info_seven_text"
+                android:layout_column="7"
+                android:inputType="text" />
         </TableRow>
 
     </TableLayout>

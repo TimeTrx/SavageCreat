@@ -1,6 +1,5 @@
 package ca.mortec.savageworldscharactercreator;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -11,11 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import java.sql.SQLException;
 
 /**
@@ -30,7 +26,7 @@ public class AddEditActivity extends Fragment{
     public interface AddEditActivityListener
     {
         //called after edit complete so character can be re-displayed
-        public void onAddEditCompleted(long rowID);
+        void onAddEditCompleted(long rowID);
     }
 
     AddEditActivityListener listener;
@@ -50,10 +46,10 @@ public class AddEditActivity extends Fragment{
 
     //set AddEditActivityListener when fragment attached
     @Override
-    public void onAttach(Activity activity) {
+    public void onAttach(Context context) {
 
-        super.onAttach(activity);
-        listener = (AddEditActivityListener) activity;
+        super.onAttach(context);
+        listener = (AddEditActivityListener) context;
 
     }
 
@@ -134,15 +130,14 @@ public class AddEditActivity extends Fragment{
                         return null;
                     }
 
-
-                    protected void doPostExecute(Object... params) {
+                    /*@Override
+                    protected void onPostExecute(Object result) {
                         System.out.println("test12");
                         // Hide soft keyboard
                         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                         imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
                         listener.onAddEditCompleted(Num);
-
-                    }
+                    }*/
                 };//end ASyncTask
 
                 System.out.println("test13");

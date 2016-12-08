@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.sql.SQLException;
 
 /**
@@ -13,25 +12,16 @@ import java.sql.SQLException;
  * Provides easy connection and creation of UserCharacters database.
  */
 
-//NEEDS A LOT of refactoring *******
-
-
-public class DBHandler {
+ class DBHandler {
 
     //database name
-    static final String DATABASE_NAME = "characters";
+    static final private String DATABASE_NAME = "characters";
 
-    SQLiteDatabase db;//for interacting with the database
-    DatabaseOpenHelper databaseOpenHelper;//creates the database
-
-
-    public DBHandler()
-    {
-
-    }
+    private SQLiteDatabase db;//for interacting with the database
+    private DatabaseOpenHelper databaseOpenHelper;//creates the database
 
     //public constructor for DatabaseConnector
-    public DBHandler(Context context)
+    DBHandler(Context context)
     {
         //System.out.println("DB created");
         //create a new DatabaseOpenHelper
@@ -39,8 +29,8 @@ public class DBHandler {
     }
 
     //updates an existing character in the database
-    public void updateCharacter(long num, String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException {
-
+    void updateCharacter(long num, String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException
+    {
         ContentValues editCharacter = new ContentValues();
         editCharacter.put("name", name);
         editCharacter.put("placeholder2", placeholder2);
@@ -56,14 +46,14 @@ public class DBHandler {
     }
 
     //open the database connection
-    public void open() throws SQLException
+    protected void open() throws SQLException
     {
         //create or open a database for reading or writing
         db = databaseOpenHelper.getWritableDatabase();
     }
 
     //close the database connection
-    public void close() throws SQLException
+    void close() throws SQLException
     {
         if(db != null)
         {
@@ -72,7 +62,8 @@ public class DBHandler {
     }
 
     //inserts a new character in the database
-    public long insertCharacter(String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException {
+    long insertCharacter(String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException
+    {
         ContentValues newCharacter = new ContentValues();
         newCharacter.put("name", name);
         newCharacter.put("placeholder2", placeholder2);
@@ -89,19 +80,20 @@ public class DBHandler {
     }
 
     //return a Cursor with all character names in the database
-    public Cursor getAllCharacters()
+    Cursor getAllCharacters()
     {
         return db.query("characters", new String[] {"_id", "name"}, null, null, null, null, "name");
     }
 
     //return a cursor containing specified character's information
-    public Cursor getOneCharacter(long num)
+    Cursor getOneCharacter(long num)
     {
         return db.query("characters", null, "_id=" +num, null, null, null, null);
     }
 
     //delete the character given  by num
-    public void deleteCharacter(long num) throws SQLException {
+    void deleteCharacter(long num) throws SQLException
+    {
         open();
         db.delete("characters", "_id=" +num, null);
         close();
@@ -110,7 +102,7 @@ public class DBHandler {
     private class DatabaseOpenHelper extends SQLiteOpenHelper
     {
         //constructor
-        public DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
+        DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
         {
             super(context, name, factory, version);
         }

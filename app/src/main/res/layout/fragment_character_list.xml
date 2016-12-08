@@ -1,167 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20.00dp"
+    android:paddingTop="20.00dp">
 
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_name"
+            android:id="@+id/nameLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/nametext"
+            android:labelFor="@+id/nametext"
+            android:layout_column="7"
+            android:padding="11dp" />
+    </TableRow>
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15px"
-        android:paddingTop="15px">
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info2"
+            android:id="@+id/TwoLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_name"
-                android:id="@+id/nameLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/info_two_text"
+            android:labelFor="@+id/info_two_text"
+            android:layout_column="7" />
+    </TableRow>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/nametext"
-                android:layout_column="7"
-                android:padding="11dp" />
-        </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info3"
+            android:id="@+id/ThreeLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info2"
-                android:id="@+id/TwoLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/info_three_text"
+            android:labelFor="@+id/info_three_text"
+            android:layout_column="7"
+            android:inputType="text" />
+    </TableRow>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:ems="10"
-                android:id="@+id/info_two_text"
-                android:layout_column="7" />
-        </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info4"
+            android:id="@+id/FourLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info3"
-                android:id="@+id/ThreeLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_four_text"
+            android:labelFor="@+id/info_four_text"
+            android:layout_column="7"
+            android:inputType="text" />
+    </TableRow>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/info_three_text"
-                android:layout_column="7"
-                android:inputType="text" />
-        </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info5"
+            android:id="@+id/FiveLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info4"
-                android:id="@+id/FourLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_five_text"
+            android:labelFor="@+id/info_five_text"
+            android:layout_column="7"
+            android:inputType="text" />
+    </TableRow>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info_four_text"
-                android:layout_column="7" />
-        </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info6"
+            android:id="@+id/SixLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info5"
-                android:id="@+id/FiveLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_six_text"
+            android:labelFor="@+id/info_six_text"
+            android:layout_column="7"
+            android:inputType="text" />
+    </TableRow>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info_five_text"
-                android:layout_column="7" />
-        </TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/label_info7"
+            android:id="@+id/SevenLabeltextView"
+            android:layout_column="6"
+            android:padding="11dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info6"
-                android:id="@+id/SixLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info_six_text"
-                android:layout_column="7" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/label_info7"
-                android:id="@+id/SevenLabeltextView"
-                android:layout_column="6"
-                android:padding="11dp" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/info_seven_text"
-                android:layout_column="7" />
-        </TableRow>
-
-    </TableLayout>
-
-
-
-</LinearLayout>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info_seven_text"
+            android:labelFor="@+id/info_seven_text"
+            android:layout_column="7"
+            android:inputType="text" />
+    </TableRow>
+</TableLayout>
