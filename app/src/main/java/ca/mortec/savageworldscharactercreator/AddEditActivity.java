@@ -73,7 +73,7 @@ public class AddEditActivity extends Fragment{
 
         //inflate GUI and get references to EditTexts
         View view = inflater.inflate(R.layout.add_edit_activity, container, false);
-
+        System.out.println("PROGRAM-TRACE: onCreateView---inflate GUI and get references to EditTexts");
         nameEditText = (EditText) view.findViewById(R.id.nametext);
         placeholder2Text = (EditText) view.findViewById(R.id.info_two_text);
         placeholder3Text = (EditText) view.findViewById(R.id.info_three_text);
@@ -86,6 +86,7 @@ public class AddEditActivity extends Fragment{
 
         if(characterInfoBundle != null)
         {
+            System.out.println("PROGRAM-TRACE: onCreateView---if characterInfoBundle != null, creating new character");
             Num = characterInfoBundle.getLong(MainActivity.Num);
             nameEditText.setText(characterInfoBundle.getString("name"));
             //communicate objects with Database
