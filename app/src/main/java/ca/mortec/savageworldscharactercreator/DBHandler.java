@@ -23,6 +23,7 @@ import java.sql.SQLException;
     //public constructor for DatabaseConnector
     DBHandler(Context context)
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---DBHandler Constructor called");
         //System.out.println("DB created");
         //create a new DatabaseOpenHelper
         databaseOpenHelper = new DatabaseOpenHelper(context, DATABASE_NAME, null, 1);
@@ -31,6 +32,7 @@ import java.sql.SQLException;
     //updates an existing character in the database
     void updateCharacter(long num, String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---updateCharacter called, NAME: " + name);
         ContentValues editCharacter = new ContentValues();
         editCharacter.put("name", name);
         editCharacter.put("placeholder2", placeholder2);
@@ -48,6 +50,7 @@ import java.sql.SQLException;
     //open the database connection
     protected void open() throws SQLException
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---open called, database is opened or created");
         //create or open a database for reading or writing
         db = databaseOpenHelper.getWritableDatabase();
     }
@@ -57,6 +60,7 @@ import java.sql.SQLException;
     {
         if(db != null)
         {
+            System.out.println("PROGRAM-TRACE: DBHamdler---close called, database exists, closing database");
             db.close();//close the database connection
         }
     }
@@ -64,6 +68,7 @@ import java.sql.SQLException;
     //inserts a new character in the database
     long insertCharacter(String name, String placeholder2, String placeholder3, String placeholder4, String placeholder5, String placeholder6, String placeholder7) throws SQLException
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---insertCharacter called, NAME: " +name);
         ContentValues newCharacter = new ContentValues();
         newCharacter.put("name", name);
         newCharacter.put("placeholder2", placeholder2);
@@ -82,18 +87,21 @@ import java.sql.SQLException;
     //return a Cursor with all character names in the database
     Cursor getAllCharacters()
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---getAllCharacters called");
         return db.query("characters", new String[] {"_id", "name"}, null, null, null, null, "name");
     }
 
     //return a cursor containing specified character's information
     Cursor getOneCharacter(long num)
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---getOneCharacter " + num + " called");
         return db.query("characters", null, "_id=" +num, null, null, null, null);
     }
 
     //delete the character given  by num
     void deleteCharacter(long num) throws SQLException
     {
+        System.out.println("PROGRAM-TRACE: DBHamdler---deleteCharacter" + num +" called");
         open();
         db.delete("characters", "_id=" +num, null);
         close();
@@ -101,6 +109,7 @@ import java.sql.SQLException;
 
     private class DatabaseOpenHelper extends SQLiteOpenHelper
     {
+
         //constructor
         DatabaseOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version)
         {
@@ -110,6 +119,7 @@ import java.sql.SQLException;
         @Override
         public void onCreate(SQLiteDatabase db)
         {
+            System.out.println("PROGRAM-TRACE: DatabaseOpenHelper---onCreate called");
             //query to create a new table in the database called characters
             String createQuery = "CREATE TABLE characters" + "(_id integer primary key autoincrement,"+"name TEXT, placeholder2 TEXT, placeholder3 TEXT, " + " placeholder4 TEXT, placeholder5 TEXT, placeholder6 TEXT, placeholder7 TEXT);";
             db.execSQL(createQuery);//execute query to create the database
@@ -117,7 +127,8 @@ import java.sql.SQLException;
 
         @Override
         public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-            //
+            //TODO IMPLEMENT THIS *******
+            System.out.println("PROGRAM-TRACE: DatabaseOpenHelper---onUpgrade called");
         }
 
     }

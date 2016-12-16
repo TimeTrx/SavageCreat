@@ -48,6 +48,7 @@ public class AddEditActivity extends Fragment{
     @Override
     public void onAttach(Context context) {
 
+        System.out.println("PROGRAM-TRACE: AddEditActivity---onAttach called");
         super.onAttach(context);
         listener = (AddEditActivityListener) context;
 
@@ -56,6 +57,8 @@ public class AddEditActivity extends Fragment{
     //remove AddEditActivityListener when Fragment detached
     @Override
     public void onDetach() {
+
+        System.out.println("PROGRAM-TRACE: AddEditActivity---onDetach called");
         super.onDetach();
         listener = null;
     }
@@ -63,6 +66,7 @@ public class AddEditActivity extends Fragment{
     //called when Fragment's view needs to be created
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        System.out.println("PROGRAM-TRACE: AddEditActivity---onCreateView called");
         super.onCreateView(inflater, container, savedInstanceState);
         setRetainInstance(true);//save fragment across config changes
         setHasOptionsMenu(true);//fragment has menu items to display
@@ -110,10 +114,7 @@ public class AddEditActivity extends Fragment{
         @Override
         public void onClick(View v)
         {
-
-            System.out.println("test10");
-
-
+            System.out.println("PROGRAM-TRACE: AddEditActivity---onClick called, character to saved/edited");
             if (nameEditText.getText().toString().trim().length() != 0) {
 
                 //ASyncTask to save character, then notify listener
@@ -121,7 +122,7 @@ public class AddEditActivity extends Fragment{
 
                     @Override
                     protected Object doInBackground(Object... params) {
-                        System.out.println("test11");
+                        System.out.println("PROGRAM-TRACE: AddEditActivity---doInBackground called, character saving changes");
                         try {
                             saveCharacter();//save character to the database
                         } catch (SQLException e) {
@@ -139,13 +140,12 @@ public class AddEditActivity extends Fragment{
                         listener.onAddEditCompleted(Num);
                     }*/
                 };//end ASyncTask
-
-                System.out.println("test13");
                 //save the character to the database using a seperate thread
                 saveCharacterTask.execute((Object[]) null);
             }
             else//required character name is blank, so display error dialog
             {
+                System.out.println("PROGRAM-TRACE: AddEditActivity---required character name is blank, so display error dialog");
                 DialogFragment errorsaving = new DialogFragment(){
                     @Override
                     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -171,9 +171,11 @@ public class AddEditActivity extends Fragment{
     //saves character information to the database
     private void saveCharacter() throws SQLException {
         //get DatabaseConnector to interact with the SQLite database
+        System.out.println("PROGRAM-TRACE: AddEditActivity---saveCharacter called");
         DBHandler dbhandler = new DBHandler(getActivity());
         if(characterInfoBundle == null)
         {
+            System.out.println("PROGRAM-TRACE: saveCharacter---if characterInfoBundle == null insert the character information into the database");
             //insert the character information into the database
             Num = dbhandler.insertCharacter(
                     nameEditText.getText().toString(),
@@ -187,6 +189,7 @@ public class AddEditActivity extends Fragment{
         }
         else
         {
+            System.out.println("PROGRAM-TRACE: saveCharacter--- else(characterInfoBundle != null) update the character information into the database");
             dbhandler.updateCharacter(Num,
                     nameEditText.getText().toString(),
                     placeholder2Text.getText().toString(),
@@ -196,11 +199,11 @@ public class AddEditActivity extends Fragment{
                     placeholder6Text.getText().toString(),
                     placeholder7Text.getText().toString());
         }//end method save character
-        System.out.println("test20");
     }
 
     public void errormessage()
     {
        // Toast.makeText(view, "msg msg", Toast.LENGTH_SHORT).show();
+        //TODO IMPLEMENT?
     }
 }

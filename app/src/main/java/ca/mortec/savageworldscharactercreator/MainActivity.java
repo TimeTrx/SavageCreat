@@ -142,7 +142,4 @@ public class MainActivity extends AppCompatActivity implements CharacterListFrag
         System.out.println("PROGRAM-TRACE: MainActivity---onAddEditCompleted called");
         getFragmentManager().popBackStack(); //removes top of back stack
     }
-
-
-
 }

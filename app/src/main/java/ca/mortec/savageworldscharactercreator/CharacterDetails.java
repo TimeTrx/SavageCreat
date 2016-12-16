@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.sql.SQLException;
 
 /**
@@ -54,6 +53,7 @@ public class CharacterDetails extends Fragment {
     @Override
     public void onAttach(Context context) {
 
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onAttach called");
         super.onAttach(context);
         listener = (character_detailsListener) context;
 
@@ -63,6 +63,7 @@ public class CharacterDetails extends Fragment {
     @Override
     public void onDetach() {
 
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onDetach called");
         super.onDetach();
         listener = null;
 
@@ -71,11 +72,13 @@ public class CharacterDetails extends Fragment {
     //called when the CharacterDetails view needs to be created
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onCreateView called");
         super.onCreateView(inflater, container, savedInstanceState);
         setRetainInstance(true); //save fragment across config changes
         //CharacterDetails is retored get the saved Num
         if(savedInstanceState != null)
         {
+            System.out.println("PROGRAM-TRACE: onCreateView---get the CharacterDetails from restored state");
             Num = savedInstanceState.getLong(MainActivity.Num);
         }
         else
@@ -84,6 +87,7 @@ public class CharacterDetails extends Fragment {
             Bundle arguments = getArguments();
             if(arguments != null)
             {
+                System.out.println("PROGRAM-TRACE: onCreateView---get Bundle of arguments then extract the character Num");
                 Num = arguments.getLong(MainActivity.Num);
             }
         }
@@ -98,6 +102,7 @@ public class CharacterDetails extends Fragment {
         placeholder5InXml = (TextView) view.findViewById(R.id.info_five_text);
         placeholder6InXml = (TextView) view.findViewById(R.id.info_six_text);
         placeholder7InXml = (TextView) view.findViewById(R.id.info_seven_text);
+        System.out.println("PROGRAM-TRACE: onCreateView---get all EditTexts and return there values");
         return view;
     }
 
@@ -105,6 +110,7 @@ public class CharacterDetails extends Fragment {
     @Override
     public void onResume() {
 
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onResume called");
         super.onResume();
         new LoadCharacterTask().execute(Num);
 
@@ -113,6 +119,7 @@ public class CharacterDetails extends Fragment {
     //save currently displayed character's Num
     @Override
     public void onSaveInstanceState(Bundle outState) {
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onSaveInstanceState called");
         super.onSaveInstanceState(outState);
         outState.putLong(MainActivity.Num, Num);
     }
@@ -121,6 +128,7 @@ public class CharacterDetails extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onCreateOptionsMenu called");
         super.onCreateOptionsMenu(menu,inflater);
         inflater.inflate(R.menu.menu_character_list,menu);
 
@@ -130,9 +138,12 @@ public class CharacterDetails extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        System.out.println("PROGRAM-TRACE: CharacterDetails---onOptionsItemSelected called");
         switch(item.getItemId())
         {
+
             case R.id.action_edit:
+                System.out.println("PROGRAM-TRACE: onOptionsItemSelected---action_edit clicked");
                 //create Bundle containing data to edit
                 Bundle arguments = new Bundle();
                 arguments.putLong(MainActivity.Num, Num);
@@ -143,14 +154,12 @@ public class CharacterDetails extends Fragment {
                 arguments.putCharSequence("info_five_text", placeholder5InXml.getText());
                 arguments.putCharSequence("info_six_text", placeholder6InXml.getText());
                 arguments.putCharSequence("info_seven_text", placeholder7InXml.getText());
-                System.out.println("Test20");
                 listener.onEditCharacter(arguments);//pass Bundle to listener
-                System.out.println("Test21");
                 return true;
+
             case R.id.action_delete:
-                System.out.println("Test22");
+                System.out.println("PROGRAM-TRACE: onOptionsItemSelected---action_delete clicked");
                 deleteCharacter();
-                System.out.println("Test23");
                 return true;
         }
 
@@ -177,6 +186,7 @@ public class CharacterDetails extends Fragment {
         //use the Cursor returned from the doInBackground method
         @Override
         protected void onPostExecute(Cursor result) {
+            System.out.println("PROGRAM-TRACE: LoadCharacterTask---onPostExecute called");
             super.onPostExecute(result);
             result.moveToFirst();//move to the first item
             //communicate objects with Database
@@ -209,6 +219,7 @@ public class CharacterDetails extends Fragment {
     //delete a character
     public void deleteCharacter()
     {
+        System.out.println("PROGRAM-TRACE: CharacterDetails---deleteCharacter called");
         //use FragmentManager to display the confirm delete Dialog
         confirmDelete.show(getFragmentManager(), "confirm delete");
     }
@@ -220,6 +231,7 @@ public class CharacterDetails extends Fragment {
         @Override
         public Dialog onCreateDialog(Bundle bundle)
         {
+            System.out.println("PROGRAM-TRACE: CharacterDetails---DialogFragment(TOAST)---->onCreateDialog called");
             //create a new AlertDialog builder
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle(R.string.confirm_title);

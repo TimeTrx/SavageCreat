@@ -45,16 +45,15 @@ public class CharacterListFragment extends ListFragment{
     };//end viewCharacterListener
 
     private CharacterListFragmentListener listener;
-    ListView characterListView; //Refactor ********
+    ListView characterListView;
     private CursorAdapter characterAdapter;//adapter for the ListView
 
     //set CharacterListFragment when fragment attached
     @Override
     public void onAttach(Context context) {
-
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onAttach called");
         super.onAttach(context);
         listener = (CharacterListFragmentListener) context;
-
     }
 
 
@@ -62,6 +61,7 @@ public class CharacterListFragment extends ListFragment{
     @Override
     public void onDetach()
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onDetach called");
         super.onDetach();
         listener = null;
     }
@@ -70,6 +70,7 @@ public class CharacterListFragment extends ListFragment{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState)
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onViewCreated called");
         super.onViewCreated(view, savedInstanceState);
         setRetainInstance(true); //save fragment across config changes
         setHasOptionsMenu(true); //this fragment has menu items to display
@@ -84,12 +85,14 @@ public class CharacterListFragment extends ListFragment{
         int[] to = new int[] {android.R.id.text1};
         characterAdapter = new SimpleCursorAdapter(getActivity(), android.R.layout.simple_list_item_1, null, from, to, 0);
         setListAdapter(characterAdapter); //sets adapter that supplies data
+        System.out.println("PROGRAM-TRACE: onViewCreated---List is created and values are assigned to the list");
     }
 
     //when fragments resumes, use a GetCharacterTask to load contacts
     @Override
     public void onResume()
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onResume called");
         super.onResume();
         new GetCharactersTask().execute((Object[]) null);
     }
@@ -103,6 +106,7 @@ public class CharacterListFragment extends ListFragment{
         @Override
         protected Cursor doInBackground(Object... params)
         {
+            System.out.println("PROGRAM-TRACE: GetCharactersTask---doInBackground called");
             try {
                 databaseConnector.open();
             } catch (SQLException e) {
@@ -115,6 +119,7 @@ public class CharacterListFragment extends ListFragment{
         @Override
         protected void onPostExecute(Cursor result)
         {
+            System.out.println("PROGRAM-TRACE: GetCharactersTask---onPostExecute called");
             characterAdapter.changeCursor(result); //sets the adapter's Cursor
             try {
                 databaseConnector.close();
@@ -128,6 +133,7 @@ public class CharacterListFragment extends ListFragment{
     @Override
     public void onStop()
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onStop called");
         Cursor cursor = characterAdapter.getCursor();
         characterAdapter.changeCursor(null);
 
@@ -144,6 +150,7 @@ public class CharacterListFragment extends ListFragment{
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onCreateOptionsMenu called");
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_add_char, menu);
 
@@ -153,9 +160,11 @@ public class CharacterListFragment extends ListFragment{
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+        System.out.println("PROGRAM-TRACE: CharacterListFragment---onOptionsItemSelected called");
         switch(item.getItemId())
         {
             case R.id.action_add:
+                System.out.println("PROGRAM-TRACE: onOptionsItemSelected---action_add called for actionlistener");
                 listener.onAddCharacter();
                 return true;
 
@@ -168,6 +177,7 @@ public class CharacterListFragment extends ListFragment{
     //update data set
     public void updateCharacterList()
     {
+        System.out.println("PROGRAM-TRACE: onOptionsItemSelected---updateCharacterList called");
         new GetCharactersTask().execute((Object[]) null);
     }
 }
